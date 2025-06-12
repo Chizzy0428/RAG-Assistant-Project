@@ -9,8 +9,12 @@ from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
 import tempfile
 
-load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
+# Load API key securely
+openai_api_key = st.secrets.get("OPENAI_API_KEY")
+
+if not openai_api_key:
+    st.error("OpenAI API key not found. Please add it in Streamlit Secrets.")
+    st.stop()
 
 st.set_page_config(page_title="PDF RAG Assistant", layout="wide")
 st.title("PDF Question Answering Assistant")
