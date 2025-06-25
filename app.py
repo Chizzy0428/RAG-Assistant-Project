@@ -31,7 +31,7 @@ if uploaded_files and openai_api_key:
                 all_docs.extend(loader.load())
 
         # Split text into chunks
-        splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+        splitter = RecursiveCharacterTextSplitter(chunk_size=2500, chunk_overlap=100)
         split_docs = splitter.split_documents(all_docs)
 
         # Vector store
